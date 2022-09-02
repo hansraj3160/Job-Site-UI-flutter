@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test_task/home.dart';
+import 'package:test_task/homepage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,11 +10,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Job design',
+      title: 'Job Design App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Test task'),
+      home: const MyHomePage(title: 'Test Task'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
