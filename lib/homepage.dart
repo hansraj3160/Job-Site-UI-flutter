@@ -232,25 +232,21 @@ bodypartmobile(BuildContext context) {
             padding: const EdgeInsets.only(top: 10.0),
             child: Stack(
               children: [
-                Container(
-                  child: Image.asset(
-                    "assets/images/first.png",
-                    height: screenSize.height * 0.50,
-                    width: screenSize.width,
-                    alignment: Alignment.center,
-                  ),
+                Image.asset(
+                  "assets/images/first.png",
+                  height: screenSize.height * 0.50,
+                  width: screenSize.width,
+                  alignment: Alignment.center,
                 ),
                 Positioned(
                   top: 200,
                   width: screenSize.width * 40,
                   child: Row(
                     children: [
-                      Container(
-                        child: Image.asset(
-                          "assets/images/one.png",
-                          height: screenSize.height * 0.40,
-                          width: screenSize.width * 0.30,
-                        ),
+                      Image.asset(
+                        "assets/images/one.png",
+                        height: screenSize.height * 0.40,
+                        width: screenSize.width * 0.30,
                       ),
                       const Text(
                         "Lorem ipsum dolor sit amet,1 ",
@@ -305,18 +301,14 @@ bodypartmobile(BuildContext context) {
               width: screenSize.width * 40,
               child: Row(
                 children: [
-                  Container(
-                    child: Image.asset(
-                      "assets/images/three.png",
-                      height: screenSize.height * 0.50,
-                      width: screenSize.width * 0.30,
-                    ),
+                  Image.asset(
+                    "assets/images/three.png",
+                    height: screenSize.height * 0.50,
+                    width: screenSize.width * 0.30,
                   ),
-                  Container(
-                    child: const Text(
-                      "Lorem ipsum dolor sit amet, 3",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
+                  const Text(
+                    "Lorem ipsum dolor sit amet, 3",
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -342,11 +334,9 @@ bodypartdesktop(BuildContext context) {
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
-          child: Text(
-            "Welcome to our \nSite for Job",
-            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-          ),
+        Text(
+          "Welcome to our \nSite for Job",
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -382,12 +372,10 @@ bodypartdesktop(BuildContext context) {
                     height: screenSize.height * 0.50,
                   ),
                 ),
-                Container(
-                  child: Image.asset(
-                    "assets/images/two.png",
-                    height: screenSize.height * 0.30,
-                    alignment: Alignment.centerRight,
-                  ),
+                Image.asset(
+                  "assets/images/two.png",
+                  height: screenSize.height * 0.30,
+                  alignment: Alignment.centerRight,
                 ),
                 const Text(
                   "Lorem ipsum dolor sit amet, 2",
@@ -400,25 +388,18 @@ bodypartdesktop(BuildContext context) {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              // margin: EdgeInsets.only(left: 120),
-              child: Image.asset(
-                "assets/images/three.png",
-                height: screenSize.height * 0.30,
-              ),
+            Image.asset(
+              "assets/images/three.png",
+              height: screenSize.height * 0.30,
             ),
-            Container(
-              child: const Text(
-                "Lorem ipsum dolor sit amet, 3",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
+            const Text(
+              "Lorem ipsum dolor sit amet, 3",
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            Container(
-              child: Image.asset(
-                "assets/images/third.png",
-                height: screenSize.height * 0.4,
-                alignment: Alignment.centerRight,
-              ),
+            Image.asset(
+              "assets/images/third.png",
+              height: screenSize.height * 0.4,
+              alignment: Alignment.centerRight,
             ),
           ],
         ),
