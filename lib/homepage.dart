@@ -1,6 +1,3 @@
-import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 
@@ -14,6 +11,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  List<bool> selectionList = [true, false, false];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,19 +26,60 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         elevation: 1.00,
-        backgroundColor: Color.fromARGB(255, 234, 238, 239),
+        backgroundColor: const Color.fromARGB(255, 234, 238, 239),
         actions: [
           TextButton(
             onPressed: (() => {}),
-            child: Text("Login"),
+            child: const Text("Login"),
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(right: 16),
           ),
         ],
       ), //
-      body: Center(
-        child: bodypart(context),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            head(context),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  ToggleButtons(
+                    onPressed: (int index) {
+                      setState(() {
+                        for (int i = 0; i < selectionList.length; i++) {
+                          if (i == index) {
+                            selectionList[i] = true;
+                          } else {
+                            selectionList[i] = false;
+                          }
+                        }
+                      });
+                    },
+                    isSelected: selectionList,
+                    children: [
+                      Container(
+                        width: 150,
+                        child: const Text("Button 1"),
+                      ),
+                      Container(
+                        width: 150,
+                        child: Text("Button 2"),
+                      ),
+                      Container(
+                        width: 150,
+                        child: Text("Button 3"),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            bodypart(),
+          ],
+        ),
       ),
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
@@ -57,12 +97,12 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           child: Container(
             alignment: Alignment.center,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color.fromARGB(255, 234, 238, 239),
             ),
             child: ElevatedButton(
               onPressed: () => {},
-              child: Text(' Elevated Button'),
+              child: const Text(' Elevated Button'),
             ),
           ),
         ),
@@ -71,43 +111,39 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-Widget bodypart(BuildContext context) {
+head(BuildContext context) {
   return Stack(
     children: [
-      ClipPath(
-        clipper: WaveClipperTwo(),
-        child: Container(
-          color: Color.fromARGB(255, 120, 236, 222),
-          child: Center(
-            child: Image.asset("assets/images/deal.png"),
+      Positioned(
+        child: ClipPath(
+          clipper: WaveClipperTwo(),
+          child: Container(
+            color: const Color.fromARGB(255, 120, 236, 222),
+            child: Center(
+              child: Image.asset("assets/images/deal.png"),
+            ),
           ),
         ),
       ),
+    ],
+  );
+}
+
+bodypart() {
+  return Column(
+    children: [
       Container(
-        child: Image.network(""),
+        height: 100,
+        child: Image.asset("assets/images/first.png"),
       ),
       Container(
-        child: Row(children: <Widget>[
-          Expanded(
-            child: ElevatedButton(
-              onPressed: () => {},
-              child: Text(' Elevated Button'),
-            ),
-          ),
-          Expanded(
-            child: ElevatedButton(
-              onPressed: () => {},
-              child: Text(' Elevated Button'),
-            ),
-          ),
-          Expanded(
-            child: ElevatedButton(
-              onPressed: () => {},
-              child: Text(' Elevated Button'),
-            ),
-          ),
-        ]),
-      )
+        height: 100,
+        child: Image.asset("assets/images/second.png"),
+      ),
+      Container(
+        height: 100,
+        child: Image.asset("assets/images/third.png"),
+      ),
     ],
   );
 }
