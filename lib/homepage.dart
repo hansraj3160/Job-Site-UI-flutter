@@ -42,42 +42,46 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: [
             head(context),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  ToggleButtons(
-                    onPressed: (int index) {
-                      setState(() {
-                        for (int i = 0; i < selectionList.length; i++) {
-                          if (i == index) {
-                            selectionList[i] = true;
-                          } else {
-                            selectionList[i] = false;
+            Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5)),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    ToggleButtons(
+                      onPressed: (int index) {
+                        setState(() {
+                          for (int i = 0; i < selectionList.length; i++) {
+                            if (i == index) {
+                              selectionList[i] = true;
+                            } else {
+                              selectionList[i] = false;
+                            }
                           }
-                        }
-                      });
-                    },
-                    isSelected: selectionList,
-                    children: [
-                      Container(
-                        width: 150,
-                        child: const Text("Button 1"),
-                      ),
-                      Container(
-                        width: 150,
-                        child: Text("Button 2"),
-                      ),
-                      Container(
-                        width: 150,
-                        child: Text("Button 3"),
-                      ),
-                    ],
-                  ),
-                ],
+                        });
+                      },
+                      isSelected: selectionList,
+                      children: [
+                        Container(
+                          width: 150,
+                          child: const Text("Button 1"),
+                        ),
+                        Container(
+                          width: 150,
+                          child: Text("Button 2"),
+                        ),
+                        Container(
+                          width: 150,
+                          child: Text("Button 3"),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
-            bodypart(),
+            bodypart(context),
           ],
         ),
       ),
@@ -112,16 +116,37 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 head(BuildContext context) {
+  var screenSize = MediaQuery.of(context).size;
   return Stack(
     children: [
       Positioned(
         child: ClipPath(
           clipper: WaveClipperTwo(),
           child: Container(
-            color: const Color.fromARGB(255, 120, 236, 222),
-            child: Center(
-              child: Image.asset("assets/images/deal.png"),
+            color: Color.fromARGB(255, 207, 244, 240),
+            child: Container(
+              height: screenSize.height * 0.40,
+              margin: const EdgeInsets.only(bottom: 10),
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: AssetImage(
+                    "assets/images/deal.png",
+                  ),
+                ),
+              ),
             ),
+          ),
+        ),
+      ),
+      const Positioned(
+        top: 50,
+        left: 50,
+        child: Text(
+          "Design Job Website",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 30,
           ),
         ),
       ),
@@ -129,20 +154,61 @@ head(BuildContext context) {
   );
 }
 
-bodypart() {
+bodypart(BuildContext context) {
+  var screenSize = MediaQuery.of(context).size;
   return Column(
+    mainAxisAlignment: MainAxisAlignment.end,
     children: [
-      Container(
-        height: 100,
-        child: Image.asset("assets/images/first.png"),
+      Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Image.asset(
+              "assets/images/first.png",
+              height: screenSize.height * 0.4,
+              width: screenSize.width,
+              alignment: Alignment.centerRight,
+            ),
+          ),
+          const Positioned(
+            top: 20,
+            right: 20,
+            child: Text(
+              "Welcom to our jobs find website",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            ),
+          )
+        ],
       ),
-      Container(
-        height: 100,
-        child: Image.asset("assets/images/second.png"),
+      Stack(
+        children: [
+          Image.asset(
+            "assets/images/second.png",
+            height: screenSize.height * 0.4,
+            width: screenSize.width,
+            alignment: Alignment.centerLeft,
+          ),
+          const Positioned(
+            top: 20,
+            right: 20,
+            child: Text("Search Job from here"),
+          )
+        ],
       ),
-      Container(
-        height: 100,
-        child: Image.asset("assets/images/third.png"),
+      Stack(
+        children: [
+          Image.asset(
+            "assets/images/third.png",
+            height: screenSize.height * 0.4,
+            width: screenSize.width,
+            alignment: Alignment.centerRight,
+          ),
+          const Positioned(
+            top: 20,
+            right: 20,
+            child: Text("Search Job from here"),
+          )
+        ],
       ),
     ],
   );
