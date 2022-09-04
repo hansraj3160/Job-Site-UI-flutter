@@ -10,9 +10,25 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+List text = [
+  "Design and Build sophisticated and highly \nscalable apps using Flutter.",
+  "You will receive a status update in an email \nwithin a few weeks of submitting your application.",
+  "This is text one"
+];
+List text2 = [
+  "within a few weeks of submitting your application",
+  " you can view and track all your applications in the Indeed My jobs section at any time.",
+  "You will receive a status update in an email"
+];
+List text3 = [
+  "you can view and track all your applications ",
+  "applications in the Indeed My jobs section at any time.",
+  "weeks of submitting your application"
+];
+
 class _MyHomePageState extends State<MyHomePage> {
+  int _c = 0;
   List<bool> selectionList = [true, false, false];
-  List text = ["this is text one ", "this is text two", "This is text three"];
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +79,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             for (int i = 0; i < selectionList.length; i++) {
                               if (i == index) {
                                 selectionList[i] = true;
+                                _c = i;
+                                index = i;
                               } else {
                                 selectionList[i] = false;
                               }
@@ -91,8 +109,8 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Container(
                   child: screenSize.width < 992
-                      ? bodypartmobile(context)
-                      : bodypartdesktop(context)),
+                      ? bodypartmobile(context, _c)
+                      : bodypartdesktop(context, _c)),
             ],
           ),
         ),
@@ -216,15 +234,16 @@ headdesktop(BuildContext context) {
   );
 }
 
-bodypartmobile(BuildContext context) {
+bodypartmobile(BuildContext context, int index) {
   var screenSize = MediaQuery.of(context).size;
   return Center(
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text(
-          "Welcome to our Site for Job",
-          style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+          "Welcome to our site. \nFind your Dream Job Here",
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+          textAlign: TextAlign.center,
         ),
         Container(
           height: screenSize.height * 0.8,
@@ -248,9 +267,11 @@ bodypartmobile(BuildContext context) {
                         height: screenSize.height * 0.40,
                         width: screenSize.width * 0.30,
                       ),
-                      const Text(
-                        "Lorem ipsum dolor sit amet,1 ",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                      Flexible(
+                        child: Text(
+                          text[index],
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ],
                   ),
@@ -275,9 +296,11 @@ bodypartmobile(BuildContext context) {
                         height: screenSize.height * 0.40,
                         width: screenSize.width * 0.30,
                       ),
-                      const Text(
-                        "Lorem ipsum dolor sit amet, 2",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                      Flexible(
+                        child: Text(
+                          text2[index],
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ],
                   ),
@@ -306,9 +329,11 @@ bodypartmobile(BuildContext context) {
                     height: screenSize.height * 0.50,
                     width: screenSize.width * 0.30,
                   ),
-                  const Text(
-                    "Lorem ipsum dolor sit amet, 3",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                  Flexible(
+                    child: Text(
+                      text3[index],
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ],
               ),
@@ -328,13 +353,13 @@ bodypartmobile(BuildContext context) {
   );
 }
 
-bodypartdesktop(BuildContext context) {
+bodypartdesktop(BuildContext context, int index) {
   var screenSize = MediaQuery.of(context).size;
   return Center(
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
+        const Text(
           "Welcome to our \nSite for Job",
           style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         ),
@@ -348,8 +373,8 @@ bodypartdesktop(BuildContext context) {
                 height: screenSize.height * 0.40,
               ),
             ),
-            const Text(
-              "Lorem ipsum dolor sit amet, ",
+            Text(
+              text[index],
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             Image.asset(
@@ -377,9 +402,11 @@ bodypartdesktop(BuildContext context) {
                   height: screenSize.height * 0.30,
                   alignment: Alignment.centerRight,
                 ),
-                const Text(
-                  "Lorem ipsum dolor sit amet, 2",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                Flexible(
+                  child: Text(
+                    text2[index],
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ),
               ],
             ),
@@ -392,9 +419,11 @@ bodypartdesktop(BuildContext context) {
               "assets/images/three.png",
               height: screenSize.height * 0.30,
             ),
-            const Text(
-              "Lorem ipsum dolor sit amet, 3",
-              style: TextStyle(fontWeight: FontWeight.bold),
+            Flexible(
+              child: Text(
+                text3[index],
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
             ),
             Image.asset(
               "assets/images/third.png",
